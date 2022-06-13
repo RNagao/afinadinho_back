@@ -1,0 +1,8 @@
+from .sensive import Sensive as sensive
+
+class Config:
+    SECRET_KEY = sensive.SECRET_KEY
+
+    SQLALCHEMY_DATABASE_URI = sensive.SQLALCHEMY_DATABASE_URI
+    SQLALCHEMY_TRACK_MODIFICATIONS = sensive.SQLALCHEMY_TRACK_MODIFICATIONS
+    JSON_SORT_KEY = sensive.JSON_SORT_KEYS
