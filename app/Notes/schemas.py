@@ -9,5 +9,4 @@ class NoteSchema(ma.SQLAlchemySchema):
 
     id = ma.Integer(dump_only=True)
     name = ma.String(required=True)
-    frequency = ma.Integer(required=True)
-    instrument = ma.String(required=True)
+    frequency = ma.Float(required=True)

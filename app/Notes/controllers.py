@@ -42,3 +42,11 @@ class NoteDetail(MethodView):
         note = schema.load(request.json, instance=note, partial=True)
         note.save()
         return schema.dump(note), 200
+
+class NoteAnalysis(MethodView):
+    def post(self, pk):
+        note = Notes.query.get_or_404(pk)
+        data = request.json
+        if note.frequency == data["frequency"]:
+            return {"afinado": True}
+        return {"afinado": False}
