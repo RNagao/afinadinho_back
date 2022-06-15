@@ -47,6 +47,6 @@ class NoteAnalysis(MethodView):
     def post(self, pk):
         note = Notes.query.get_or_404(pk)
         data = request.json
-        if note.frequency == data["frequency"]:
+        if ((note.frequency*0.975) <= data["frequency"]) and (data["frequency"] <= (note.frequency*1.025)):
             return {"afinado": True}
         return {"afinado": False}
