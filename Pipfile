@@ -9,6 +9,8 @@ flask-sqlalchemy = "*"
 flask-marshmallow = "*"
 flask-migrate = "*"
 marshmallow-sqlalchemy = "*"
+paho-mqtt = "*"
+beebotte = "*"
 
 [dev-packages]
 

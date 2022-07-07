@@ -17,5 +17,5 @@ notes_api.add_url_rule(
 )
 
 notes_api.add_url_rule(
-    '/note_analysis/<int:pk>', view_func=NoteAnalysis.as_view('note_analysis'), methods=['POST']
+    '/note_analysis/<int:pk>', view_func=NoteAnalysis.as_view('note_analysis'), methods=['GET']
 )

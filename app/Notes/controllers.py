@@ -4,6 +4,7 @@ from ..extensions import db
 from ..utils.filters import filters
 from .model import Notes
 from .schemas import NoteSchema
+from broker.main import *
 
 class NoteList(MethodView):
     def get(self):
@@ -44,9 +45,13 @@ class NoteDetail(MethodView):
         return schema.dump(note), 200
 
 class NoteAnalysis(MethodView):
-    def post(self, pk):
+    def get(self, pk):
         note = Notes.query.get_or_404(pk)
-        data = request.json
-        if ((note.frequency*0.975) <= data["frequency"]) and (data["frequency"] <= (note.frequency*1.025)):
-            return {"afinado": True}
-        return {"afinado": False}
+        data = read_freq_resource()
+        if ((note.frequency*0.975) <= data[0]["data"]) and (data[0]["data"] <= (note.frequency*1.025)):
+            return {"afinado": True,
+                    "frequencia_natural_nota": note.frequency,
+                    "frequencia_lida": data[0]["data"]}
+        return {"afinado": False,
+                "frequencia_natural_nota": note.frequency,
+                "frequencia_lida": data[0]["data"]}

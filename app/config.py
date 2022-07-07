@@ -1,4 +1,4 @@
-from .sensive import Sensive as sensive
+from .sensive import Sensitive_prod as sensive
 
 class Config:
     SECRET_KEY = sensive.SECRET_KEY
