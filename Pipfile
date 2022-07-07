@@ -11,6 +11,8 @@ flask-migrate = "*"
 marshmallow-sqlalchemy = "*"
 paho-mqtt = "*"
 beebotte = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
