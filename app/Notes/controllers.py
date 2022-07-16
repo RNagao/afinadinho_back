@@ -55,3 +55,12 @@ class NoteAnalysis(MethodView):
         return {"afinado": False,
                 "frequencia_natural_nota": note.frequency,
                 "frequencia_lida": data[0]["data"]}
+
+
+class WriteBroker(MethodView):
+    def post(self):
+        data = request.json
+        if not data["resource"] or not data["data"]:
+            return {"expected body with the resource and data"}
+        resultado = write_broker(data["resource"], data["data"])
+        return {"write": resultado}, 200

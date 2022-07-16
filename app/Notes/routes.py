@@ -1,6 +1,5 @@
-from crypt import methods
 from flask import Blueprint
-from .controllers import NoteCreate, NoteDetail, NoteList, NoteAnalysis
+from .controllers import NoteCreate, NoteDetail, NoteList, NoteAnalysis, WriteBroker
 
 notes_api = Blueprint('notes_api', __name__)
 
@@ -18,4 +17,8 @@ notes_api.add_url_rule(
 
 notes_api.add_url_rule(
     '/note_analysis/<int:pk>', view_func=NoteAnalysis.as_view('note_analysis'), methods=['GET']
+)
+
+notes_api.add_url_rule(
+    '/write_broker', view_func=WriteBroker.as_view('write_broker'), methods=['POST']
 )

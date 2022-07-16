@@ -21,8 +21,15 @@ def read_teste_resource():
 def read_freq_resource():
     return freq_res.read(limit=1)
 
+def write_broker(resource, mens):
+    res = Resource(bclient, 'Afinadinho', str(resource))
+    return bclient.writeBulk('Afinadinho', [
+        {"resource": str(resource), "data": mens}
+    ])
+
+
 # publish_teste_resource("Vamooooo")
-# publish_freq_resource(440)
+# publish_freq_resource(443)
 
 # print(read_teste_resource())
 # print(read_freq_resource())
