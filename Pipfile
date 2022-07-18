@@ -13,6 +13,7 @@ paho-mqtt = "*"
 beebotte = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+flask-cors = "*"
 
 [dev-packages]
 

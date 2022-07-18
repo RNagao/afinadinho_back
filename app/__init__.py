@@ -10,6 +10,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     ma.init_app(app)
+    cors.init_app(app, resources={r"/*":{"origins":"*"}})
 
     app.register_blueprint(notes_api)
 
