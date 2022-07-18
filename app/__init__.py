@@ -1,5 +1,5 @@
 from flask import Flask
-from .extensions import db, migrate, ma
+from .extensions import db, migrate, ma, cors
 from .config import Config
 from .Notes.routes import notes_api
 
