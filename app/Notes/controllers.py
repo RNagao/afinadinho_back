@@ -62,6 +62,6 @@ class WriteBroker(MethodView):
     def post(self):
         data = request.json
         if ((not "resource" in data) or (not "data" in data)):
-            return {"error": "expected body with the resource and data"}
+            return {"error": "expected body with the resource and data"}, 400
         resultado = write_broker(data["resource"], data["data"])
         return {"write": resultado}, 200
