@@ -1,3 +1,4 @@
+from logging.handlers import DatagramHandler
 from flask import request, jsonify
 from flask.views import MethodView
 from ..extensions import db
@@ -60,7 +61,7 @@ class NoteAnalysis(MethodView):
 class WriteBroker(MethodView):
     def post(self):
         data = request.json
-        if not data["resource"] or not data["data"]:
-            return {"expected body with the resource and data"}
+        if ((not "resource" in data) or (not "data" in data)):
+            return {"error": "expected body with the resource and data"}
         resultado = write_broker(data["resource"], data["data"])
         return {"write": resultado}, 200

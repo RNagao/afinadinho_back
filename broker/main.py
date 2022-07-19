@@ -4,6 +4,7 @@ bclient = BBT("Jwk23dE5HcJPSjPaWwbnlOwf", "ZqQmaMxMupIScTWt1jgAiij4AegCh0XF")
 
 teste_res = Resource(bclient, 'Afinadinho', 'teste')
 freq_res = Resource(bclient, 'Afinadinho', 'frequencia')
+gravar_res = Resource(bclient, 'Afinadinho', 'gravar')
 
 def publish_teste_resource(mensagem):
     return bclient.writeBulk('Afinadinho', [
@@ -27,9 +28,15 @@ def write_broker(resource, mens):
         {"resource": str(resource), "data": mens}
     ])
 
+def change_gravar_status():
+    #gravar = gravar_res
+    return bclient.writeBulk('Afinadinho', [
+        {'resource': "gravar", "data": False}
+    ])
 
 # publish_teste_resource("Vamooooo")
 # publish_freq_resource(443)
 
 # print(read_teste_resource())
 # print(read_freq_resource())
+# change_gravar_status()
