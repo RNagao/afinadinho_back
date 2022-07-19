@@ -46,8 +46,8 @@ class NoteDetail(MethodView):
         return schema.dump(note), 200
 
 class NoteAnalysis(MethodView):
-    def get(self, pk):
-        note = Notes.query.get_or_404(pk)
+    def get(self):
+        note = Notes.query.get_or_404(read_note_id_resource()[0]["data"])
         data = read_freq_resource()
         if ((note.frequency*0.975) <= data[0]["data"]) and (data[0]["data"] <= (note.frequency*1.025)):
             return {"afinado": True,

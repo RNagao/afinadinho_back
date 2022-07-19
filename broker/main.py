@@ -5,6 +5,7 @@ bclient = BBT("Jwk23dE5HcJPSjPaWwbnlOwf", "ZqQmaMxMupIScTWt1jgAiij4AegCh0XF")
 teste_res = Resource(bclient, 'Afinadinho', 'teste')
 freq_res = Resource(bclient, 'Afinadinho', 'frequencia')
 gravar_res = Resource(bclient, 'Afinadinho', 'gravar')
+note_id_res = Resource(bclient, 'Afinadinho', 'nota_id')
 
 def publish_teste_resource(mensagem):
     return bclient.writeBulk('Afinadinho', [
@@ -21,6 +22,9 @@ def read_teste_resource():
 
 def read_freq_resource():
     return freq_res.read(limit=1)
+
+def read_note_id_resource():
+    return note_id_res.read(limit=1)
 
 def write_broker(resource, mens):
     res = Resource(bclient, 'Afinadinho', str(resource))
