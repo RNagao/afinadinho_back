@@ -49,7 +49,7 @@ class NoteAnalysis(MethodView):
     def get(self):
         note = Notes.query.get_or_404(read_note_id_resource()[0]["data"])
         data = read_freq_resource()
-        if ((note.frequency*0.975) <= data[0]["data"]) and (data[0]["data"] <= (note.frequency*1.025)):
+        if ((note.frequency*0.95) <= data[0]["data"]) and (data[0]["data"] <= (note.frequency*1.05)):
             return {"afinado": True,
                     "frequencia_natural_nota": note.frequency,
                     "frequencia_lida": data[0]["data"]}
